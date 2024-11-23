@@ -17,49 +17,72 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueLines = new string[]
         {
-            "Olá, aventureiro! Você deseja saber mais sobre este mundo?", // Linha 0
-            "Tem certeza que quer saber mais? Podemos começar por onde quiser.", // Linha 1
-            "Muito bem, deixe-me te contar sobre o Reino dos Dragões!", // Linha 2
-            "O Reino é um lugar misterioso, cheio de lendas e magia.", // Linha 3
-            "Você sabia que há uma antiga profecia sobre um herói escolhido?", // Linha 4
-            "Dizem que ele virá de terras distantes, mas ninguém sabe exatamente quem é.", // Linha 5
-            "Talvez você seja o escolhido! Mas, claro, isso é apenas uma história.", // Linha 6
-            "Mas, se preferir, podemos mudar de assunto.", // Linha 7
-            "Quem sabe falar sobre os dragões? Eles são criaturas fascinantes.", // Linha 8
-            "Os dragões são muito mais inteligentes do que parecem. Alguns dizem que eles falam!", // Linha 9
-            "Mas também há quem tenha medo deles, claro.", // Linha 10
-            "Agora, se preferir, podemos falar sobre os misteriosos portais do Reino.", // Linha 11
-            "Esses portais levam a diferentes dimensões e são muito perigosos para aventureiros inexperientes.", // Linha 12
-            "Se você tiver coragem, posso te contar mais sobre os portais...", // Linha 13
-            "Ou, talvez, você prefira ir embora e deixar essa conversa para outra hora.", // Linha 14
-            "Se for isso que você deseja, entendo. Mas quem sabe no futuro?", // Linha 15
-            "Nos encontramos novamente se decidir explorar o Reino mais a fundo.", // Linha 16
-            "Espero que tenha gostado de ouvir as histórias. Até logo!", // Linha 17
-            "Obrigado por ouvir as lendas, aventureiro. Fique bem!", // Linha 18
-            "Se decidir voltar, estarei aqui para compartilhar mais aventuras.", // Linha 19
+            "Olá, Amor!! quanto tempo", // Linha 0
+            "Olá, Amor!! quanto tempo", // Linha 1
+            "Nao esta me reconhecendo?", // Linha 2
+            "Sou o seu amor ué, como pode se esquecer?", // Linha 3
+            "Voce esta brincando comigo né? para isso Nao tem graça!", // Linha 4
+            "Eu estava tão animada", // Linha 5
+            "Com o dia de hoje é claro", // Linha 6
+            "Não, seu bobo, é nosso dia juntos", // Linha 7
+            "Mas Voce me prometeu por esse dia há anos", // Linha 8
+            "Mas deveria! afinal eu sou sua namorada!", // Linha 9
+            "Eu não sou??", // Linha 10
+            "Voce não me ama?", // Linha 11
+            "", // Linha 12
+            "", // Linha 13
+            "", // Linha 14
+            "", // Linha 15
+            "", // Linha 16
+            "", // Linha 17
+            "", // Linha 18
+            "", // Linha 19
         };
 
         positiveLabels = new string[]
         {
-            "Sim, me conte mais!",// Linha 0
-            "Sim, me conte mais!",// Linha 1
-            "Sim, me conte mais!",// Linha 2
-            "Legal, me conte mais!", // Linha 3
-            "Não sabia, pode me falar mais?", // Linha 4
-            "Será que sou eu? ou é o Luva de pedreiro?", // Linha 5
-            "Certeza que sou eu, RECEBAAAA!", // Linha 6
-            "Já sei que sou eu mesmo!", // Linha 7
-            "Pode ser eu gosto deles", // Linha 8
-            "Sim eu assiti o GOT", // Linha 9
-            "Quem não deve não teme parça", // Linha 10
-            "Você não termina nenhuma história, chato da peste...", // Linha 11
-            "Assisti uma série da cultura que tinha isso ai de portal", // Linha 12
-            "Aqui tem coragem, MIAUUU", // Linha 13
-            "Você é biruleibe? não foi isso que falei", // Linha 14
-            "Vai tarde", // Linha 15
-            "Parece que falei com um doido!", // Linha 16
-            "Que nada, só fazer um pix de R$100", // Linha 17
-            "Até breve biruta", // Linha 17
+            "ahnn... oi?",// Linha 0
+            "ola?",// Linha 1
+            "acho que não, quem é voce?",// Linha 2
+            "Eu não sei, onde eu estou?", // Linha 3
+            "Como assim?", // Linha 4
+            "Animada com o que??", // Linha 5
+            "O que tem hoje? é feriado e eu nao sabia?", // Linha 6
+            "Calma la, eu estou muito perdido, nao sei onde eu estou e so queria ir embora, tenho coisas pra fazer", // Linha 7
+            "Eu não me lembro disso", // Linha 8
+            "O Que???", // Linha 9
+            "Eu... Eu nao sei...", // Linha 10
+            "Mas eu nem te conheço, como vou amar?", // Linha 11
+            "", // Linha 12
+            "", // Linha 13
+            "", // Linha 14
+            "", // Linha 15
+            "", // Linha 16
+            "", // Linha 17
+            "", // Linha 17
+        };
+
+        negativeLabels = new string[]
+        {
+            ".",// Linha 0
+            ".",// Linha 1
+            ".",// Linha 2
+            ".", // Linha 3
+            ".", // Linha 4
+            ".", // Linha 5
+            ".", // Linha 6
+            ".", // Linha 7
+            ".", // Linha 8
+            ".", // Linha 9
+            ".", // Linha 10
+            "É claro que sim", // Linha 11
+            ".", // Linha 12
+            ".", // Linha 13
+            ".", // Linha 14
+            ".", // Linha 15
+            ".", // Linha 16
+            ".", // Linha 17
+            ".", // Linha 17
         };
 
         // Exibe a primeira linha do diálogo
@@ -82,7 +105,9 @@ public class DialogueSystem : MonoBehaviour
         if (currentLine < positiveLabels.Length)
         {
             var indexPositiveBtn = 0;
-            setNewTextButton(indexPositiveBtn, currentLine);
+            var indexNegativeBtn = 1;
+            setNewTextButtonPositive(indexPositiveBtn, currentLine);
+            setNewTextButtonNegative(indexNegativeBtn, currentLine);
         }
     }
 
@@ -101,14 +126,9 @@ public class DialogueSystem : MonoBehaviour
 
         // Exibe opções com base na linha atual
         switch (currentLine)
-        {
-            case 0: // Primeira linha de diálogo
-            case 1:
-                dialogueOptions[0].SetActive(true); // "Sim, me conte mais!"
-                dialogueOptions[1].SetActive(true); // "Não, prefiro ir embora."
-                break;
-           case 7: // Quando o jogador pergunta sobre os dragões
-            case 14: // Quando o jogador pergunta sobre os portais
+        {    
+                     
+            case 11: // Quando o jogador pergunta sobre os portais
                 dialogueOptions[0].SetActive(true); // "Sim, me conte mais!"
                 dialogueOptions[1].SetActive(true); // "Não, prefiro ir embora."
                 break;
@@ -146,17 +166,8 @@ public class DialogueSystem : MonoBehaviour
     {
         switch (currentLine)
         {
-            case 0: // Primeira linha: "Sim, me conte mais!"
-            case 1: // Opção inicial de saber mais
-                currentLine = 2; // Avança para o Reino dos Dragões
-                break;
-
-            case 7: // Quando o jogador escolhe saber mais sobre dragões
-                currentLine = 8; // Fala mais sobre os dragões
-                break;
-
-            case 14: // Quando o jogador escolhe saber mais sobre os portais
-                currentLine = 13; // Fala mais sobre os portais
+            case 0: // Para todas as outras opções
+                currentLine = 2; // Apenas avança para a próxima linha
                 break;
 
             default: // Para todas as outras opções
@@ -168,13 +179,26 @@ public class DialogueSystem : MonoBehaviour
     // Lógica quando o jogador escolhe "Não, prefiro ir embora."
     void HandleNoOption()
     {
-        currentLine = 16; // Finaliza o diálogo e diz adeus
+        switch (currentLine)
+        {
+            
+            case 11: // Quando o jogador escolhe saber mais sobre dragões
+                currentLine = 8; // Fala mais sobre os dragões
+                break;
+       
+        }
     }
 
-    void setNewTextButton(int indexDialogOption, int currentLine)
+    void setNewTextButtonPositive(int indexDialogOption, int currentLine)
     {
         Text buttonText = dialogueOptions[indexDialogOption].GetComponentInChildren<Text>();
         buttonText.text = positiveLabels[currentLine];
+    }
+
+    void setNewTextButtonNegative(int indexDialogOption, int currentLine)
+    {
+        Text buttonText = dialogueOptions[indexDialogOption].GetComponentInChildren<Text>();
+        buttonText.text = negativeLabels[currentLine];
     }
     // Finaliza o diálogo
     void EndDialogue()
